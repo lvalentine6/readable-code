@@ -12,7 +12,25 @@ import java.util.List;
 
 public class StudyCafeFileHandler {
 
-    public List<StudyCafePass> readStudyCafePasses() {
+    public List<StudyCafePass> selectedCafePasses(StudyCafePassType studyCafePassType) {
+        List<StudyCafePass> passes = readStudyCafePasses();
+        return passes.stream()
+            .filter(studyCafePass -> studyCafePass.getPassType() == studyCafePassType)
+            .toList();
+    }
+
+    public StudyCafeLockerPass selectedLockerPass(StudyCafePass studyCafePass) {
+        List<StudyCafeLockerPass> passes = readLockerPasses();
+        return passes.stream()
+            .filter(option ->
+                option.getPassType() == studyCafePass.getPassType()
+                    && option.getDuration() == studyCafePass.getDuration()
+            )
+            .findFirst()
+            .orElse(null);
+    }
+
+    private List<StudyCafePass> readStudyCafePasses() {
         try {
             List<String> lines = Files.readAllLines(Paths.get("src/main/resources/cleancode/studycafe/pass-list.csv"));
             List<StudyCafePass> studyCafePasses = new ArrayList<>();
@@ -33,7 +51,7 @@ public class StudyCafeFileHandler {
         }
     }
 
-    public List<StudyCafeLockerPass> readLockerPasses() {
+    private List<StudyCafeLockerPass> readLockerPasses() {
         try {
             List<String> lines = Files.readAllLines(Paths.get("src/main/resources/cleancode/studycafe/locker.csv"));
             List<StudyCafeLockerPass> lockerPasses = new ArrayList<>();
