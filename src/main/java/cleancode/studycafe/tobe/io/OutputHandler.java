@@ -7,6 +7,12 @@ import java.util.List;
 
 public class OutputHandler {
 
+    public void showInitializeMessage() {
+        showWelcomeMessage();
+        showAnnouncement();
+        askPassTypeSelection();
+    }
+
     public void showWelcomeMessage() {
         System.out.println("*** 프리미엄 스터디카페 ***");
     }
