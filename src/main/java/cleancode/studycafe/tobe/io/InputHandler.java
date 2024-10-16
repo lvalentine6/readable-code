@@ -43,5 +43,4 @@ public class InputHandler {
 		}
 		return "1".equals(userInput);
 	}
-
 }
