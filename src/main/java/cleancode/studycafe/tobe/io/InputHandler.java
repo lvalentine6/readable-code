@@ -9,7 +9,11 @@ import java.util.Scanner;
 
 public class InputHandler {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private final Scanner SCANNER;
+
+    public InputHandler(Scanner SCANNER) {
+        this.SCANNER = SCANNER;
+    }
 
     public StudyCafePassType getPassTypeSelectingUserAction() {
         String userInput = SCANNER.nextLine();

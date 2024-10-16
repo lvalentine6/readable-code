@@ -1,5 +1,7 @@
 package cleancode.studycafe.tobe;
 
+import java.util.Scanner;
+
 import cleancode.studycafe.tobe.io.InputHandler;
 import cleancode.studycafe.tobe.io.OutputHandler;
 import cleancode.studycafe.tobe.io.StudyCafeFileHandler;
@@ -7,7 +9,8 @@ import cleancode.studycafe.tobe.io.StudyCafeFileHandler;
 public class StudyCafeApplication {
 
 	public static void main(String[] args) {
-		InputHandler inputHandler = new InputHandler();
+		Scanner scanner = new Scanner(System.in);
+		InputHandler inputHandler = new InputHandler(scanner);
 		OutputHandler outputHandler = new OutputHandler();
 		StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
 
