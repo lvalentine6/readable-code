@@ -1,5 +1,7 @@
 package cleancode.studycafe.tobe.model;
 
+import java.util.Objects;
+
 public class StudyCafePass {
 
     private final StudyCafePassType passType;
@@ -12,6 +14,22 @@ public class StudyCafePass {
         this.duration = duration;
         this.price = price;
         this.discountRate = discountRate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        StudyCafePass that = (StudyCafePass)o;
+        return duration == that.duration && price == that.price
+            && Double.compare(discountRate, that.discountRate) == 0 && passType == that.passType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(passType, duration, price, discountRate);
     }
 
     public static StudyCafePass of(StudyCafePassType passType, int duration, int price, double discountRate) {
